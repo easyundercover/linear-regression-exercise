@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import plotly.express as px
 import statsmodels.api as sm
+import pickle
 from statsmodels.api import OLS
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -45,3 +46,7 @@ X_poly_train = poly_features.fit_transform(X_train)
 X_poly_test = poly_features.fit_transform(X_test)
 model4 = model.fit(X_poly_train, y_train)
 y_pred3 = model4.predict(X_poly_test) 
+
+#Save model that fits better
+filename = '../models/final_model.sav'
+pickle.dump(model, open(filename, 'wb'))
